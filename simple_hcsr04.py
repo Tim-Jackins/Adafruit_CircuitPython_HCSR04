@@ -155,7 +155,7 @@ class HCSR04:
                 # Wait for a pulse
                 if (time.monotonic() - timestamp) > self._timeout:
                     self._echo.pause()
-                    raise RuntimeError("Timed out")
+                    return None
             self._echo.pause()
             pulselen = self._echo[0]
         else:
@@ -163,16 +163,16 @@ class HCSR04:
             # hang out while the pin is low
             while not self._echo.value:
                 if time.monotonic() - timestamp > self._timeout:
-                    raise RuntimeError("Timed out")
+                    return None
             timestamp = time.monotonic()
             # track how long pin is high
             while self._echo.value:
                 if time.monotonic() - timestamp > self._timeout:
-                    raise RuntimeError("Timed out")
+                    return None
             pulselen = time.monotonic() - timestamp
             pulselen *= 1000000 # convert to us to match pulseio
         if pulselen >= 65535:
-            raise RuntimeError("Timed out")
+            return None
 
         # positive pulse time, in seconds, times 340 meters/sec, then
         # divided by 2 gives meters. Multiply by 100 for cm
