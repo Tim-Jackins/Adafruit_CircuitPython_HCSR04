@@ -31,8 +31,8 @@ setup(
     url='https://github.com/adafruit/Adafruit_CircuitPython_HCSR04',
 
     # Author details
-    author='Adafruit Industries',
-    author_email='circuitpython@adafruit.com',
+    author='Jack Timmins',
+    author_email='timmins.jack595@gmail.com',
 
     install_requires=['Adafruit-Blinka'],
 
@@ -52,9 +52,9 @@ setup(
     ],
 
     # What does your project relate to?
-    keywords='adafruit hcsr04 hardware micropython circuitpython ultrasonic',
+    keywords='hcsr04 hardware micropython circuitpython ultrasonic',
 
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
-    py_modules=['adafruit_hcsr04'],
+    py_modules=['simple_hcsr04'],
 )
